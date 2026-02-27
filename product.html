@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamondsect | Produto</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="topbar" role="region" aria-label="Avisos">
+    <div class="topbar__track">
+      <span>FRETE GRÁTIS | GARANTIA DE 30 DIAS</span>
+      <span>CUPOM DE PRIMEIRA COMPRA</span>
+      <span>PARCELE EM ATÉ 12X NO CARTÃO</span>
+      <span>COMPRA SEGURA</span>
+      <span>FRETE GRÁTIS | GARANTIA DE 30 DIAS</span>
+      <span>CUPOM DE PRIMEIRA COMPRA</span>
+      <span>PARCELE EM ATÉ 12X NO CARTÃO</span>
+      <span>COMPRA SEGURA</span>
+    </div>
+  </div>
+
+
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__left"></div>
+      <a class="brand" href="index.html">DIAMOND<span>SECT</span></a>
+      <div class="header__right">
+        <form class="search search--inline" action="#" onsubmit="event.preventDefault();">
+          <span class="search__icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="O que você está buscando?" autocomplete="off" />
+          <button class="search__btn" type="button" title="Pesquisar">Buscar</button>
+        </form>
+        <a class="cartbtn cartbtn--premium" href="carrinho.html" aria-label="Meu carrinho">
+          <span class="cartbtn__label">Carrinho</span>
+          <span class="cartcount">0</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="ternos.html">Ternos</a>
+      <a href="perfumaria.html">Perfumaria</a>
+      <a href="joias.html">Joias</a>
+      <a href="admin.html">Admin</a>
+      <a href="#suporte">Suporte</a>
+      <a href="#rastrear">Rastrear pedido</a>
+    </nav>
+  </header>
+
+
+<main class="pdp" id="pdpRoot">
+  <div class="breadcrumb"><a href="index.html">Início</a> <span style="opacity:.6">/</span> <span>Produto</span></div>
+
+  <section class="pdp__grid">
+    <div class="panel">
+      <div class="gallery">
+        <div class="gallery__main">
+          <img id="mainImg" src="" alt="Foto do produto">
+        </div>
+        <div class="gallery__thumbs" id="thumbs"></div>
+      </div>
+    </div>
+
+    <aside class="panel pinfo">
+      <h1 id="pName">Produto</h1>
+      <div class="sku" id="pSku">SKU:</div>
+
+      <div class="pprice" id="pPrice">R$ 0,00</div>
+
+      <div class="stock">
+        <span class="pill">Estoque: <b id="pStock">0</b></span>
+        <span class="pill" id="pPill" style="display:none"></span>
+      </div>
+
+      <div class="desc" id="pDesc">Descrição</div>
+
+      <div class="qtyline">
+        <div class="qtybox" aria-label="Quantidade">
+          <button class="qbtn" id="qtyMinus" type="button">−</button>
+          <div class="qtyval" id="qtyVal">1</div>
+          <button class="qbtn" id="qtyPlus" type="button">+</button>
+        </div>
+      </div>
+
+      <button class="btn" id="addBtn" type="button">Adicionar ao carrinho</button>
+
+      <div class="notice">
+        Dica: você cadastra as fotos (URLs) e o estoque no <b>admin.html</b>.
+      </div>
+    </aside>
+  </section>
+</main>
+
+<script type="module" src="js/product.js"></script>
+<script>
+(function(){
+  const header = document.querySelector(".header");
+  if(!header) return;
+  let lastY = window.scrollY;
+  let ticking = false;
+  function onScroll(){
+    const y = window.scrollY;
+    if(y > 10) header.classList.add("is-scrolled");
+    else header.classList.remove("is-scrolled");
+    const diff = Math.abs(y - lastY);
+    if(diff > 8){
+      if(y > lastY && y > 120) header.classList.add("is-hidden");
+      else if(y < lastY) header.classList.remove("is-hidden");
+    }
+    lastY = y;
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

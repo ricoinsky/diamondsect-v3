@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamondsect | Loja Online</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="topbar" role="region" aria-label="Avisos">
+    <div class="topbar__track">
+      <span>FRETE GRÁTIS | GARANTIA DE 30 DIAS</span>
+      <span>CUPOM DE PRIMEIRA COMPRA</span>
+      <span>PARCELE EM ATÉ 12X NO CARTÃO</span>
+      <span>COMPRA SEGURA</span>
+      <span>FRETE GRÁTIS | GARANTIA DE 30 DIAS</span>
+      <span>CUPOM DE PRIMEIRA COMPRA</span>
+      <span>PARCELE EM ATÉ 12X NO CARTÃO</span>
+      <span>COMPRA SEGURA</span>
+    </div>
+  </div>
+
+
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__left"></div>
+      <a class="brand" href="index.html">DIAMOND<span>SECT</span></a>
+      <div class="header__right">
+        <form class="search search--inline" action="#" onsubmit="event.preventDefault();">
+          <span class="search__icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="O que você está buscando?" autocomplete="off" />
+          <button class="search__btn" type="button" title="Pesquisar">Buscar</button>
+        </form>
+        <a class="cartbtn cartbtn--premium" href="carrinho.html" aria-label="Meu carrinho">
+          <span class="cartbtn__label">Carrinho</span>
+          <span class="cartcount">0</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="is-active" href="index.html">Início</a>
+      <a href="ternos.html">Ternos</a>
+      <a href="perfumaria.html">Perfumaria</a>
+      <a href="joias.html">Joias</a>
+      <a href="admin.html">Admin</a>
+      <a href="#suporte">Suporte</a>
+      <a href="#rastrear">Rastrear pedido</a>
+    </nav>
+  </header>
+
+
+  <section class="hero" aria-label="Banner">
+    <div class="hero__slides">
+      <article class="hero__slide is-active" style="background-image:url('https://images.unsplash.com/photo-1520975682071-aacbc3f4a78a?auto=format&fit=crop&w=2400&q=75');">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <h1>Luxo, lifestyle<br>e presença.</h1>
+          <p>Curadoria premium em ternos, perfumaria e joias.</p>
+          <a class="btn btn--light" href="ternos.html">Explorar ternos</a>
+        </div>
+      </article>
+
+      <article class="hero__slide" style="background-image:url('https://images.unsplash.com/photo-1520962917960-20d0d5c9d1a8?auto=format&fit=crop&w=2400&q=75');">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <h1>Perfumaria<br>de assinatura.</h1>
+          <p>Notas marcantes e acabamento premium.</p>
+          <a class="btn btn--light" href="perfumaria.html">Ver perfumaria</a>
+        </div>
+      </article>
+
+      <article class="hero__slide" style="background-image:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2400&q=75');">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <h1>Joias<br>que impõem.</h1>
+          <p>Detalhes que definem status com elegância.</p>
+          <a class="btn btn--light" href="joias.html">Ver joias</a>
+        </div>
+      </article>
+
+      <div class="hero__nav" aria-hidden="false">
+        <button class="hero__btn" type="button" id="heroPrev" aria-label="Slide anterior">‹</button>
+        <button class="hero__btn" type="button" id="heroNext" aria-label="Próximo slide">›</button>
+      </div>
+
+      <div class="hero__dots" id="heroDots" aria-label="Navegação do slider"></div>
+    </div>
+  </section>
+
+  <section class="section" id="produtos">
+    <div class="section__head">
+      <h2>Destaques</h2>
+      <a class="link" href="admin.html">Cadastrar produtos</a>
+    </div>
+
+    <div class="toolbar">
+      <div class="count" id="resultCount">0 item(s)</div>
+      <div class="sort">
+        <label for="sortSelect">Ordenar:</label>
+        <select id="sortSelect">
+          <option value="best">Mais vendidos</option>
+          <option value="low">Menor preço</option>
+          <option value="high">Maior preço</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" id="shopGrid"></div>
+  </section>
+
+  <section class="section" id="suporte">
+    <div class="panel" style="text-align:center">
+      <h2 style="margin:0 0 8px;letter-spacing:.5px">Novidades</h2>
+      <p class="small">Receba lançamentos e ofertas em primeira mão.</p>
+      <div style="height:12px"></div>
+      <form class="field" style="max-width:520px;margin:0 auto" onsubmit="event.preventDefault(); alert('Cadastro enviado!');">
+        <input type="email" placeholder="Seu e-mail" required />
+        <button type="submit">Assinar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer" id="rastrear">
+    <div class="footer__grid">
+      <div>
+        <h4>Central de Atendimento</h4>
+        <p class="small">Seg a Sab: 08:00 às 22:00</p>
+        <p class="small">WhatsApp: (seu número)</p>
+        <p class="small">E-mail: contato@diamondsect.com.br</p>
+      </div>
+      <div>
+        <h4>Informações</h4>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos e Condições</a>
+        <a href="#">Trocas e Devoluções</a>
+      </div>
+      <div>
+        <h4>Suporte</h4>
+        <a href="#">Contato</a>
+        <a href="#">Central de Ajuda</a>
+      </div>
+      <div>
+        <h4>Confiança</h4>
+        <p class="small">Compra segura • Ambiente protegido</p>
+        <p class="small">Pagamentos: (em breve)</p>
+      </div>
+    </div>
+    <div class="footer__bottom">Diamondsect | Todos os direitos reservados.</div>
+  </footer>
+
+  <script type="module" src="js/shop.js"></script>
+  <script src="js/home.js"></script>
+  <script>
+(function(){
+  const header = document.querySelector(".header");
+  if(!header) return;
+  let lastY = window.scrollY;
+  let ticking = false;
+  function onScroll(){
+    const y = window.scrollY;
+    if(y > 10) header.classList.add("is-scrolled");
+    else header.classList.remove("is-scrolled");
+    const diff = Math.abs(y - lastY);
+    if(diff > 8){
+      if(y > lastY && y > 120) header.classList.add("is-hidden");
+      else if(y < lastY) header.classList.remove("is-hidden");
+    }
+    lastY = y;
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
