@@ -5,16 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diamondsect | Produto</title>
   <link rel="stylesheet" href="css/style.css" />
+
+  <meta name="description" content="Produto Diamondsect: detalhes completos, galeria e zoom premium." />
+  <meta property="og:site_name" content="Diamondsect" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Diamondsect" />
+  <meta property="og:description" content="Produto Diamondsect: detalhes completos, galeria e zoom premium." />
+  <meta name="theme-color" content="#0b0b0b" />
+
 </head>
+
 <body>
 
   <div class="topbar" role="region" aria-label="Avisos">
     <div class="topbar__track">
-      <span>FRETE GRÁTIS | GARANTIA DE 30 DIAS</span>
+      <span>FRETE GRÁTIS PARA TODO O BRASIL | GARANTIA DE 30 DIAS</span>
       <span>CUPOM DE PRIMEIRA COMPRA</span>
       <span>PARCELE EM ATÉ 12X NO CARTÃO</span>
       <span>COMPRA SEGURA</span>
-      <span>FRETE GRÁTIS | GARANTIA DE 30 DIAS</span>
+      <span>FRETE GRÁTIS PARA TODO O BRASIL | GARANTIA DE 30 DIAS</span>
       <span>CUPOM DE PRIMEIRA COMPRA</span>
       <span>PARCELE EM ATÉ 12X NO CARTÃO</span>
       <span>COMPRA SEGURA</span>
@@ -24,102 +33,145 @@
 
   <header class="header">
     <div class="header__inner">
-      <div class="header__left"></div>
-      <a class="brand" href="index.html">DIAMOND<span>SECT</span></a>
+      <div class="header__left">
+        <a class="btn btn--mini admin-link" href="admin.html" title="Área Admin (cadastrar produtos)">Admin</a>
+      </div>
+
+      <a class="brand" href="index.html">Diamondsect</a>
+
       <div class="header__right">
         <form class="search search--inline" action="#" onsubmit="event.preventDefault();">
           <span class="search__icon" aria-hidden="true">⌕</span>
           <input id="searchInput" type="search" placeholder="O que você está buscando?" autocomplete="off" />
           <button class="search__btn" type="button" title="Pesquisar">Buscar</button>
         </form>
+
+        <button class="accountbtn" type="button" data-account-btn aria-label="Conta">
+          <span class="avatar" data-account-avatar>DS</span>
+          <span data-account-label>Entrar</span>
+        </button>
+
         <a class="cartbtn cartbtn--premium" href="carrinho.html" aria-label="Meu carrinho">
-          <span class="cartbtn__label">Carrinho</span>
+          <span class="cartbtn__label">Meu carrinho</span>
           <span class="cartcount">0</span>
         </a>
       </div>
-    </div>
 
-    <nav class="nav">
-      <a href="index.html">Início</a>
-      <a href="ternos.html">Ternos</a>
-      <a href="perfumaria.html">Perfumaria</a>
-      <a href="joias.html">Joias</a>
-      <a href="admin.html">Admin</a>
+      <nav class="nav">
+      <a class="is-active" href="index.html">Início</a>
+      <a class="" href="ternos.html">Ternos</a>
+      <a class="" href="perfumaria.html">Perfumaria</a>
+      <a class="" href="joias.html">Joias</a>
+      <a class="" href="linho.html">Linho</a>
+      <a class="" href="blazer.html">Blazer</a>
       <a href="#suporte">Suporte</a>
       <a href="#rastrear">Rastrear pedido</a>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-
-<main class="pdp" id="pdpRoot">
-  <div class="breadcrumb"><a href="index.html">Início</a> <span style="opacity:.6">/</span> <span>Produto</span></div>
-
-  <section class="pdp__grid">
-    <div class="panel">
-      <div class="gallery">
-        <div class="gallery__main">
-          <img id="mainImg" src="" alt="Foto do produto">
+  <!-- Auth modal -->
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal__backdrop" id="authBackdrop" data-close-auth></div>
+    <div class="modal__box">
+      <button class="modal__close" type="button" data-close-auth aria-label="Fechar">Fechar</button>
+      <h2 id="authTitle">Entrar</h2>
+      <input type="hidden" id="authMode" value="login" />
+      <div class="fieldcol">
+        <div id="authNameWrap" style="display:none">
+          <input id="authName" type="text" placeholder="Seu nome" />
         </div>
-        <div class="gallery__thumbs" id="thumbs"></div>
+        <input id="authEmail" type="email" placeholder="Seu e-mail" autocomplete="email" />
+        <input id="authPass" type="password" placeholder="Senha" autocomplete="current-password" />
+        <button class="btn" type="button" id="authSubmit">Entrar</button>
+        <div id="authToast" class="badge-ok" style="display:none"></div>
+        <div class="switchrow">
+          <span id="authSwitchText">Não tem conta?</span>
+          <a id="authSwitch">Criar conta</a>
+        </div>
+        <div class="authnote">⚠️ Login é local (salvo no navegador). Para login real com segurança, depois a gente integra com backend.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <main class="product-page" id="pdpWrap"></main>
+
+  <!-- Zoom premium -->
+  <div class="zoommodal" id="zoomModal" aria-hidden="true">
+    <div class="zoommodal__bg" id="zoomBackdrop" data-zoom-close></div>
+    <div class="zoommodal__box">
+      <div class="zoommodal__top">
+        <div class="zoomlabel">Zoom premium</div>
+        <div class="zoomctl">
+          <span class="zoomlabel" id="zoomVal">100%</span>
+          <button class="iconbtn" type="button" id="zoomOut" aria-label="Diminuir zoom">−</button>
+          <button class="iconbtn" type="button" id="zoomIn" aria-label="Aumentar zoom">+</button>
+          <button class="iconbtn" type="button" id="zoomReset" aria-label="Resetar zoom">Reset</button>
+          <button class="iconbtn" type="button" data-zoom-close aria-label="Fechar">Fechar</button>
+        </div>
+      </div>
+      <img class="zoommodal__img" id="zoomImg" src="" alt="Zoom do produto" />
+    </div>
+  </div>
+
+
+  <section class="newsletter" id="suporte">
+    <div class="newsletter__box">
+      <h2>Novidades</h2>
+      <p>Receba lançamentos e ofertas em primeira mão.</p>
+      <form class="form form--row" onsubmit="event.preventDefault(); alert('Cadastro enviado!');">
+        <input type="email" placeholder="Seu e-mail" required />
+        <button class="btn" type="submit">Assinar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer" id="rastrear">
+    <div class="footer__grid">
+      <div>
+        <h4>Central de Atendimento</h4>
+        <p class="muted">Seg a Sab: 08:00 às 22:00</p>
+        <p class="muted">WhatsApp: (seu número)</p>
+        <p class="muted">E-mail: contato@diamondsect.com.br</p>
+      </div>
+
+      <div>
+        <h4>Informações</h4>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos e Condições</a>
+        <a href="#">Trocas e Devoluções</a>
+      </div>
+
+      <div>
+        <h4>Suporte</h4>
+        <a href="#">Contato</a>
+        <a href="#">Central de Ajuda</a>
+      </div>
+
+      <div>
+        <h4>Confiança</h4>
+        <p class="muted">Compra segura • Ambiente protegido</p>
+        <p class="muted">Pagamentos: Pix, Crédito, Débito (em breve)</p>
       </div>
     </div>
 
-    <aside class="panel pinfo">
-      <h1 id="pName">Produto</h1>
-      <div class="sku" id="pSku">SKU:</div>
+    <div class="footer__bottom">
+      Diamondsect | Todos os direitos reservados.
+    </div>
+  </footer>
 
-      <div class="pprice" id="pPrice">R$ 0,00</div>
 
-      <div class="stock">
-        <span class="pill">Estoque: <b id="pStock">0</b></span>
-        <span class="pill" id="pPill" style="display:none"></span>
-      </div>
+  <script type="module">
+    import { initAuth } from "./js/auth.js";
+    import { initSmartHeader } from "./js/header.js";
+    import { initChat } from "./js/chat.js";
+    import { initProduct } from "./js/product.js";
 
-      <div class="desc" id="pDesc">Descrição</div>
-
-      <div class="qtyline">
-        <div class="qtybox" aria-label="Quantidade">
-          <button class="qbtn" id="qtyMinus" type="button">−</button>
-          <div class="qtyval" id="qtyVal">1</div>
-          <button class="qbtn" id="qtyPlus" type="button">+</button>
-        </div>
-      </div>
-
-      <button class="btn" id="addBtn" type="button">Adicionar ao carrinho</button>
-
-      <div class="notice">
-        Dica: você cadastra as fotos (URLs) e o estoque no <b>admin.html</b>.
-      </div>
-    </aside>
-  </section>
-</main>
-
-<script type="module" src="js/product.js"></script>
-<script>
-(function(){
-  const header = document.querySelector(".header");
-  if(!header) return;
-  let lastY = window.scrollY;
-  let ticking = false;
-  function onScroll(){
-    const y = window.scrollY;
-    if(y > 10) header.classList.add("is-scrolled");
-    else header.classList.remove("is-scrolled");
-    const diff = Math.abs(y - lastY);
-    if(diff > 8){
-      if(y > lastY && y > 120) header.classList.add("is-hidden");
-      else if(y < lastY) header.classList.remove("is-hidden");
-    }
-    lastY = y;
-    ticking = false;
-  }
-  window.addEventListener("scroll", function(){
-    if(!ticking){
-      window.requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
-</script>
+    initAuth();
+    initSmartHeader();
+    initChat();
+    initProduct();
+  </script>
 </body>
 </html>

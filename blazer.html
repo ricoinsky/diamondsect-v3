@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diamondsect | Meu carrinho</title>
+  <title>Diamondsect | Blazer</title>
   <link rel="stylesheet" href="css/style.css" />
 
-  <meta name="description" content="Seu carrinho Diamondsect: finalize sua seleção premium com segurança." />
+  <meta name="description" content="Blazers premium Diamondsect: estrutura elegante e visual de alto padrão." />
   <meta property="og:site_name" content="Diamondsect" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Diamondsect" />
-  <meta property="og:description" content="Seu carrinho Diamondsect: finalize sua seleção premium com segurança." />
+  <meta property="og:description" content="Blazers premium Diamondsect: estrutura elegante e visual de alto padrão." />
   <meta name="theme-color" content="#0b0b0b" />
 
 </head>
 
-<body class="cart-page">
+<body data-category="blazer">
 
   <div class="topbar" role="region" aria-label="Avisos">
     <div class="topbar__track">
@@ -58,12 +58,12 @@
       </div>
 
       <nav class="nav">
-      <a class="is-active" href="index.html">Início</a>
+      <a class="" href="index.html">Início</a>
       <a class="" href="ternos.html">Ternos</a>
       <a class="" href="perfumaria.html">Perfumaria</a>
       <a class="" href="joias.html">Joias</a>
       <a class="" href="linho.html">Linho</a>
-      <a class="" href="blazer.html">Blazer</a>
+      <a class="is-active" href="blazer.html">Blazer</a>
       <a href="#suporte">Suporte</a>
       <a href="#rastrear">Rastrear pedido</a>
       </nav>
@@ -95,80 +95,99 @@
   </div>
 
 
-  <main class="cart-page">
-    <div class="cart-top">
-      <h1>Meu carrinho</h1>
-      <a href="index.html">Continuar comprando</a>
+  <section class="hero" aria-label="Banner Blazer">
+    <div class="hero__slides">
+      <article class="hero__slide is-active" style="background-image:url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=2400&q=80');">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <h1>Blazers</h1>
+          <p>Estrutura impecável, caimento premium e acabamento de luxo.</p>
+          <a class="btn btn--light" href="#produtos">Ver produtos</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="produtos">
+    <div class="section__head">
+      <h2>Produtos</h2>
+      <a class="link" href="index.html">Voltar</a>
     </div>
 
-    <section class="cart-layout">
-      <div class="panel">
-        <div id="cartList" class="cart-list"></div>
+    
 
-        <div class="divider"></div>
+    <div class="toolbar">
+      <div class="count" id="resultCount">0 item(s)</div>
+      <div class="sort">
+        <label for="sortSelect">Ordenar:</label>
+        <select id="sortSelect">
+          <option value="best">Mais vendidos</option>
+          <option value="low">Menor preço</option>
+          <option value="high">Maior preço</option>
+        </select>
+      </div>
+    </div>
 
-        <div class="reco-title">Você também pode gostar</div>
-        <div id="recoGrid" class="reco-grid"></div>
+    <div class="grid" id="shopGrid"></div>
+  </section>
+
+
+  <section class="newsletter" id="suporte">
+    <div class="newsletter__box">
+      <h2>Novidades</h2>
+      <p>Receba lançamentos e ofertas em primeira mão.</p>
+      <form class="form form--row" onsubmit="event.preventDefault(); alert('Cadastro enviado!');">
+        <input type="email" placeholder="Seu e-mail" required />
+        <button class="btn" type="submit">Assinar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer" id="rastrear">
+    <div class="footer__grid">
+      <div>
+        <h4>Central de Atendimento</h4>
+        <p class="muted">Seg a Sab: 08:00 às 22:00</p>
+        <p class="muted">WhatsApp: (seu número)</p>
+        <p class="muted">E-mail: contato@diamondsect.com.br</p>
       </div>
 
-      <aside class="panel summary">
-        <h2>Resumo</h2>
+      <div>
+        <h4>Informações</h4>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos e Condições</a>
+        <a href="#">Trocas e Devoluções</a>
+      </div>
 
-        <div class="row"><span>Itens</span><span id="itemsCount">0</span></div>
-        <div class="row"><span>Subtotal</span><span id="subTotal">R$ 0,00</span></div>
-        <div class="row"><span>Desconto</span><span id="discountVal">R$ 0,00</span></div>
-        <div class="row"><span>Frete</span><span id="shippingVal">R$ 0,00</span></div>
+      <div>
+        <h4>Suporte</h4>
+        <a href="#">Contato</a>
+        <a href="#">Central de Ajuda</a>
+      </div>
 
-        <div class="divider"></div>
-
-        <div class="row"><span>Total</span><span class="total" id="cartTotal">R$ 0,00</span></div>
-
-        <div class="divider"></div>
-
-        <div class="small" style="margin-bottom:8px;">Cupom</div>
-        <div class="field" style="margin-bottom:12px;">
-          <input id="couponInput" type="text" placeholder="Ex: DIAMOND10" />
-          <button id="applyCouponBtn" type="button">Aplicar</button>
-        </div>
-
-        <div class="small" style="margin-bottom:8px;">Calcular frete (CEP)</div>
-        <div class="field" style="margin-bottom:12px;">
-          <input id="cepInput" inputmode="numeric" placeholder="Ex: 45600-000" />
-          <button id="calcShipBtn" type="button">Calcular</button>
-        </div>
-
-        <div id="statusPill" class="badge-ok" style="display:none;"></div>
-
-        <div style="height:12px;"></div>
-
-        <button class="btn" type="button" id="finishBtn">FINALIZAR COMPRA</button>
-
-        <div class="small" style="margin-top:10px;">
-          Pagamentos (em breve): Pix • Crédito • Débito<br/>
-          Frete e prazo serão calculados no checkout.
-        </div>
-      </aside>
-    </section>
-  </main>
-
-  <div class="mobile-bar">
-    <div class="mb-row">
-      <div class="small">Total</div>
-      <div class="mb-total" id="mobileTotal">R$ 0,00</div>
+      <div>
+        <h4>Confiança</h4>
+        <p class="muted">Compra segura • Ambiente protegido</p>
+        <p class="muted">Pagamentos: Pix, Crédito, Débito (em breve)</p>
+      </div>
     </div>
-    <button class="btn mb-btn" id="mobileFinishBtn">FINALIZAR COMPRA</button>
-  </div>
+
+    <div class="footer__bottom">
+      Diamondsect | Todos os direitos reservados.
+    </div>
+  </footer>
+
 
   <script type="module">
+    import { initShop } from "./js/shop.js";
     import { initAuth } from "./js/auth.js";
     import { initSmartHeader } from "./js/header.js";
     import { initChat } from "./js/chat.js";
-    import { initCart } from "./js/cart.js";
 
     initAuth();
     initSmartHeader();
     initChat();
-    initCart();
+    initShop();
   </script>
 </body>
 </html>
